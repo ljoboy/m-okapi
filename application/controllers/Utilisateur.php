@@ -5,12 +5,14 @@ class Utilisateur extends CI_Controller
 {
     public function form_inscription()
     {
-        $this->load->view('utilisateur/form_inscription');
+        $part = $this->load->view('utilisateur/register',[],true);
+        $this->load->view("utilisateur/index",["part"=>$part]);
     }
 
     public function form_authentification()
     {
-        $this->load->view('utilisateur/form_authentification');
+		$part = $this->load->view('utilisateur/login',[],true);
+		$this->load->view("utilisateur/index",["part"=>$part]);
     }
 
     public function nouvel_utilisateur()
@@ -49,11 +51,12 @@ class Utilisateur extends CI_Controller
             $this->load->model('UtilisateurModel');
             $this->UtilisateurModel->creer_utilisateur($data);
         
-            $this->load->view('utilisateur/inscription_success');
+            redirect();
         }
         else
         {
-            $this->load->view('utilisateur/form_inscription');
+			$part = $this->load->view('utilisateur/register',[],true);
+			$this->load->view("utilisateur/index",["part"=>$part]);
         }
         
     }
@@ -88,9 +91,8 @@ class Utilisateur extends CI_Controller
             );
             
             $this->session->set_flashdata($d);
-            $form_auth = $this->load->view('utilisateur/form_authentification', [], true);
-            $d = array('page' => $form_auth);
-            $this->load->view('mokapi_home', $d);
+			$part = $this->load->view('utilisateur/login',[],true);
+			$this->load->view("utilisateur/index",["part"=>$part]);
         }
     }
 

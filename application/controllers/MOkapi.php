@@ -10,8 +10,7 @@ class MOkapi extends CI_Controller
             redirect('utilisateur/accueil');
         }
 
-        $form_auth = $this->load->view('utilisateur/form_authentification', [], true);
-        $d = array('page' => $form_auth);
-        $this->load->view('mokapi_home', $d);
+		$part = $this->load->view('utilisateur/login',[],true);
+		$this->load->view("utilisateur/index",["part"=>$part]);
     }
 }
