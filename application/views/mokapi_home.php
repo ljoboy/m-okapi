@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <!doctype html>
-<html>
+<html lang="fr">
     <head>
         <title>M-OKAPI</title>
         <meta charset="utf-8" />
