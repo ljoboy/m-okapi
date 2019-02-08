@@ -3,10 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Utilisateur extends CI_Controller
 {
-	/*public function __construct()
+	public function __construct()
 	{
-		if ()
-	}*/
+		parent::__construct();
+		if($this->session->is_connected)
+		{
+			redirect();
+		}
+	}
 
 	public function index()
 	{
@@ -78,43 +82,33 @@ class Utilisateur extends CI_Controller
             'login' => $login,
             'mdp' => $mdp
         );
+		if ($this->form_validation->run() === TRUE) {
+			$this->load->model('UtilisateurModel');
+			$r = $this->UtilisateurModel->check_authentification($d);
 
-        $this->load->model('UtilisateurModel');
-        $r = $this->UtilisateurModel->check_authentification($d);
+			if(count($r) > 0)
+			{
+				$user = $r[0];
+				$d = array(
+					'id' => $user->id,
+					'nomcomplet' => $user->nomcomplet,
+					'is_connected' => true
+				);
+				$this->session->set_userdata($d);
+				redirect();
+			}
+			else
+			{
+				$d = array(
+					'error_login' => 'Login ou mot de passe incorrect'
+				);
 
-        if(count($r) > 0)
-        {
-            $user = $r[0];
-            $d = array(
-                'id' => $user->id,
-                'nomcomplet' => $user->nomcomplet,
-                'is_connected' => true
-            );
-            $this->session->set_userdata($d);
-            redirect('utilisateur/accueil');
-        }
-        else
-        {
-            $d = array(
-                'error_login' => 'Login ou mot de passe incorrect'
-            );
-            
-            $this->session->set_flashdata($d);
-			$part = $this->load->view('utilisateur/login',[],true);
-			$this->load->view("utilisateur/index",["part"=>$part]);
-        }
-    }
+				$this->session->set_flashdata($d);
+			}
+		}
+		$part = $this->load->view('utilisateur/login',[],true);
+		$this->load->view("utilisateur/index",["part"=>$part]);
 
-    public function accueil()
-    {
-        if($this->session->is_connected)
-        {
-            $this->load->view('utilisateur/accueil');
-        }
-        else
-        {
-            redirect();
-        }
     }
 
     public function deconnexion()

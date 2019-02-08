@@ -33,15 +33,15 @@
 
 			<div class="md-form">
 				<i class="fa fa-lock prefix"></i>
-				<input name="mdp" type="password" id="form4" class="form-control">
-				<label for="form4">Mot de passe :</label>
+				<input name="mdp" type="password" id="form5" class="form-control">
+				<label for="form5">Mot de passe :</label>
 				<?= form_error('mdp','<em class="text-danger">','</em>') ?>
 			</div>
 
 			<div class="md-form">
 				<i class="fa fa-lock prefix"></i>
-				<input name="mdpconf" type="password" id="form4" class="form-control">
-				<label for="form4">Mot de passe :</label>
+				<input name="mdpconf" type="password" id="form6" class="form-control">
+				<label for="form6">Mot de passe :</label>
 				<?= form_error('mdpconf','<em class="text-danger">','</em>') ?>
 			</div>
 

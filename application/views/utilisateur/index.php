@@ -141,108 +141,30 @@
 	<!--/.Mask-->
 
 </header>
-<!--/Navigation & Intro-->
-
-<!--Main layout-->
-<main>
-	<div class="container">
-	</div>
-</main>
-<!--/Main layout-->
-
 <!--Footer-->
-<footer class="page-footer center-on-small-only">
+<footer class="page-footer blue center-on-small-only" style="margin-top: 0">
 
 	<!--Footer Links-->
 	<div class="container-fluid">
 		<div class="row">
 
 			<!--First column-->
-			<div class="col-md-3 offset-md-1">
-				<h5 class="title">ABOUT MATERIAL DESIGN</h5>
-				<p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
-
-				<p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.</p>
+			<div class="col-md-6">
+				<h5 class="title">M-OKAPI</h5>
+				<p>Votre gestionnaire de budget optimisé</p>
 			</div>
 			<!--/.First column-->
-
-			<hr class="hidden-md-up">
-
-			<!--Second column-->
-			<div class="col-md-2 offset-md-1">
-				<h5 class="title">Useful inks</h5>
-				<ul>
-					<li><a href="#!">Contact us</a></li>
-					<li><a href="#!">About company</a></li>
-					<li><a href="#!">Bug Report</a></li>
-					<li><a href="#!">License</a></li>
-					<li><a href="#!">ChangeLog</a></li>
-					<li><a href="#!">Browsers and devices</a></li>
-				</ul>
-			</div>
-			<!--/.Second column-->
-
-			<hr class="hidden-md-up">
-
-			<!--Third column-->
-			<div class="col-md-5">
-				<h5 class="title">Instagram feed</h5>
-				<div class="footer-imgs"></div>
-				<ul class="inline-ul-img">
-					<li><img src="../../../../../images/avatars/avatar-1.jpg" alt=""></li>
-					<li><img src="../../../../../images/avatars/avatar-2.jpg" alt=""></li>
-					<li><img src="../../../../../images/avatars/avatar-8.jpg" alt=""></li>
-					<li><img src="../../../../../images/avatars/avatar-5.jpg" alt=""></li>
-					<br>
-					<li><img src="../../../../../images/avatars/avatar-4.jpg" alt=""></li>
-					<li><img src="../../../../../images/avatars/avatar-7.jpg" alt=""></li>
-					<li><img src="../../../../../images/avatars/avatar-3.jpg" alt=""></li>
-					<li><img src="../../../../../images/avatars/avatar-6.jpg" alt=""></li>
-				</ul>
-			</div>
-			<!--/.Third column-->
-
 		</div>
 	</div>
 	<!--/.Footer Links-->
 
-	<hr>
-
-	<!--Call to action-->
-	<div class="call-to-action">
-		<ul>
-			<li>
-				<h5>Register for free</h5></li>
-			<li><a href="#" class="btn btn-danger">Sign up!</a></li>
-		</ul>
-	</div>
-	<!--/.Call to action-->
-
-	<hr>
-
-	<!--Social buttons-->
-	<div class="social-section">
-		<ul>
-			<li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
-			<li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
-			<li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-			<li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
-			<li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
-			<li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
-			<li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
-		</ul>
-	</div>
-	<!--/.Social buttons-->
-
 	<!--Copyright-->
 	<div class="footer-copyright">
 		<div class="container-fluid">
-			© 2015 Copyright: <a href="../../../../../index.html"> MDBootstrap.com </a>
-
+			© <?=date('Y')?> Copyright: <a href="<?=base_url()?>"> M-OKAPI </a>
 		</div>
 	</div>
 	<!--/.Copyright-->
-
 </footer>
 <!--/.Footer-->
 <!-- SCRIPTS -->
