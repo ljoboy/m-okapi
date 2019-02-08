@@ -12,9 +12,6 @@
 	<link rel="stylesheet" href="<?= base_url("assets/css/font-awesome.min.css") ?>">
 	<!-- Material Design Bootstrap -->
 	<link href="<?= base_url('assets/css/mdb.css')?>" rel="stylesheet">
-
-
-
 	<style>
 		html,
 		body,
@@ -83,7 +80,8 @@
 			background-color: #275C88;
 		}
 	</style>
-
+	<link rel="shortcut icon" href="<?=base_url("logo.png")?>" type="image/x-icon">
+	
 </head>
 
 <body>
@@ -100,7 +98,7 @@
 			<!--Collapse content-->
 			<div class="collapse navbar-toggleable-xs" id="collapseEx">
 				<!--Navbar Brand-->
-				<a class="navbar-brand" href="<?= base_url() ?>">M-OKAPI</a>
+				<a class="navbar-brand" href="<?= base_url() ?>"><img width="200px" src="<?=base_url("logo.png")?>" class="img-responsive" alt="M-OKAPI"></a>
 				<!--Links-->
 
 				<!--Navbar icons-->
