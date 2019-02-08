@@ -8,9 +8,8 @@ class MOkapi extends CI_Controller
         if($this->session->is_connected)
         {
             redirect('utilisateur/accueil');
-        }
-
-		$part = $this->load->view('utilisateur/login',[],true);
-		$this->load->view("utilisateur/index",["part"=>$part]);
+        }else{
+        	redirect("utilisateur/connexion");
+		}
     }
 }

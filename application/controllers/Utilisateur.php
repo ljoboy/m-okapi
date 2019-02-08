@@ -3,7 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Utilisateur extends CI_Controller
 {
-    public function form_inscription()
+	/*public function __construct()
+	{
+		if ()
+	}*/
+
+	public function index()
+	{
+		$this->connexion();
+	}
+	public function form_inscription()
     {
         $part = $this->load->view('utilisateur/register',[],true);
         $this->load->view("utilisateur/index",["part"=>$part]);
