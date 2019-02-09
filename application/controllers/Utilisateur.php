@@ -82,7 +82,8 @@ class Utilisateur extends CI_Controller
             'login' => $login,
             'mdp' => $mdp
         );
-		if ($this->form_validation->run() === TRUE) {
+
+		if ($_SERVER['REQUEST_METHOD'] === "POST") {
 			$this->load->model('UtilisateurModel');
 			$r = $this->UtilisateurModel->check_authentification($d);
 
@@ -108,12 +109,5 @@ class Utilisateur extends CI_Controller
 		}
 		$part = $this->load->view('utilisateur/login',[],true);
 		$this->load->view("utilisateur/index",["part"=>$part]);
-
-    }
-
-    public function deconnexion()
-    {
-        $this->session->unset_userdata('is_connected');
-        redirect();
     }
 }

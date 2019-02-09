@@ -15,6 +15,13 @@ class MOkapi extends CI_Controller
 
 	public function index()
     {
-		$this->load->view('utilisateur/accueil');
+		$data['page'] = $this->load->view('utilisateur/accueil', [], true);
+		$this->load->view("mokapi_home", $data);
     }
+
+	public function deconnexion()
+	{
+		$this->session->unset_userdata('is_connected');
+		redirect();
+	}
 }
