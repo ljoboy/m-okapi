@@ -16,6 +16,7 @@ class MOkapi extends CI_Controller
 	public function index()
     {
 		$data['page'] = $this->load->view('utilisateur/accueil', [], true);
+		$data['titre'] = "Accueil";
 		$this->load->view("mokapi_home", $data);
     }
 

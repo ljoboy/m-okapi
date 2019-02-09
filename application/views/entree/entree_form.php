@@ -13,8 +13,8 @@
         <h2 style="margin-top:0px">Entree <?php echo $button ?></h2>
         <form action="<?php echo $action; ?>" method="post">
 	    <div class="form-group">
-            <label for="int">Id Utilisateur <?php echo form_error('id_utilisateur') ?></label>
-            <input type="text" class="form-control" name="id_utilisateur" id="id_utilisateur" placeholder="Id Utilisateur" value="<?php echo $id_utilisateur; ?>" />
+            <label for="int">Id Categorie Entree <?php echo form_error('id_categorie_entree') ?></label>
+            <input type="text" class="form-control" name="id_categorie_entree" id="id_categorie_entree" placeholder="Id Categorie Entree" value="<?php echo $id_categorie_entree; ?>" />
         </div>
 	    <div class="form-group">
             <label for="varchar">Nom <?php echo form_error('nom') ?></label>

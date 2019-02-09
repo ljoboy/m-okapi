@@ -63,7 +63,7 @@ class Utilisateur extends CI_Controller
 
             $this->load->model('UtilisateurModel');
             $this->UtilisateurModel->creer_utilisateur($data);
-        
+            $this->session->flashdata('register_success','Enregistrer avec succès. Connectez-vous maintenant');
             redirect();
         }
         else
