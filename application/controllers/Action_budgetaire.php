@@ -8,14 +8,20 @@ class Action_budgetaire extends CI_Controller
     function __construct()
     {
         parent::__construct();
+		if(!$this->session->is_connected)
+		{
+			redirect("utilisateur/connexion");
+		}
         $this->load->model('Action_budgetaire_model');
         $this->load->library('form_validation');        
-	$this->load->library('datatables');
+		$this->load->library('datatables');
+		$data['titre'] = "Action Budgétaire";
     }
 
     public function index()
     {
-        $this->load->view('action_budgetaire/action_budgetaire_list');
+        $data['page'] = $this->load->view('action_budgetaire/action_budgetaire_list', [], true);
+        $this->load->view('mokapi_home',$data);
     } 
     
     public function json() {
@@ -52,7 +58,8 @@ class Action_budgetaire extends CI_Controller
 	    'motif' => set_value('motif'),
 	    'date_creation' => set_value('date_creation'),
 	);
-        $this->load->view('action_budgetaire/action_budgetaire_form', $data);
+        $page = $this->load->view('action_budgetaire/action_budgetaire_form', $data, true);
+        $this->load->view('mokapi_home',['page'=>$page]);
     }
     
     public function create_action() 
