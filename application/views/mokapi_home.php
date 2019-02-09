@@ -78,8 +78,8 @@
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
-							<li><a href="#" class="waves-effect">Ajouter</a></li>
-							<li><a href="#" class="waves-effect">Lister</a></li>
+							<li><a href="<?= site_url('action_budgetaire/create')?>" class="waves-effect">Ajouter</a></li>
+							<li><a href="<?=site_url('action_budgetaire')?>" class="waves-effect">Lister</a></li>
 						</ul>
 					</div>
 				</li>
@@ -119,7 +119,7 @@
 
 		<!-- Breadcrumb-->
 		<div class="breadcrumb-dn">
-			<p><?= isset($titre) ? $titre : "" ?></p>
+			<p><?= isset($titre) ? $titre : "M-OKAPI" ?></p>
 		</div>
 
 		<ul class="nav navbar-nav float-xs-right">

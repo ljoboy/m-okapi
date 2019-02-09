@@ -8,6 +8,10 @@ class Categorie_sortie extends CI_Controller
     function __construct()
     {
         parent::__construct();
+		if(!$this->session->is_connected)
+		{
+			redirect("utilisateur/connexion");
+		}
         $this->load->model('Categorie_sortie_model');
         $this->load->library('form_validation');        
 	$this->load->library('datatables');

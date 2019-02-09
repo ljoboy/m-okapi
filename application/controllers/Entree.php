@@ -8,6 +8,10 @@ class Entree extends CI_Controller
     function __construct()
     {
         parent::__construct();
+		if(!$this->session->is_connected)
+		{
+			redirect("utilisateur/connexion");
+		}
         $this->load->model('Entree_model');
         $this->load->library('form_validation');
     }
