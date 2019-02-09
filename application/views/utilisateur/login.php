@@ -9,7 +9,9 @@
 				<h3><i class="fa fa-user"></i> Se connecter :</h3>
 				<hr>
 			</div>
-
+			<em class="flex-center text-success">
+				<?= $this->session->register_success ?>
+			</em>
 			<em class="flex-center text-danger">
 				<?= $this->session->error_login; ?>
 			</em>
