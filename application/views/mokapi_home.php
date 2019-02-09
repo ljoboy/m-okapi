@@ -47,12 +47,12 @@
 		<!-- Side navigation links -->
 		<li>
 			<ul class="collapsible collapsible-accordion">
-				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i>Categories de
-						sorties<i class="fa fa-angle-down rotate-icon"></i></a>
+				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i>
+						Categories de sorties<i class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
-							<li><a href="#" class="waves-effect"> Créer</a></li>
-							<li><a href="#" class="waves-effect"> Lister</a></li>
+							<li><a href="<?= site_url('categorie_sortie/create')?>" class="waves-effect"> Créer</a></li>
+							<li><a href="<?= site_url('categorie_sortie')?>" class="waves-effect"> Lister</a></li>
 						</ul>
 					</div>
 				</li>
@@ -60,8 +60,8 @@
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
-							<li><a href="#" class="waves-effect"> Créer</a></li>
-							<li><a href="#" class="waves-effect"> Lister</a></li>
+							<li><a href="<?= site_url('entree/create')?>" class="waves-effect"> Créer</a></li>
+							<li><a href="<?= site_url('entree')?>" class="waves-effect"> Lister</a></li>
 						</ul>
 					</div>
 				</li>
@@ -69,8 +69,8 @@
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
-							<li><a href="#" class="waves-effect"> Créer</a></li>
-							<li><a href="#" class="waves-effect">Lister</a></li>
+							<li><a href="<?= site_url('exercice_budgetaire/create')?>" class="waves-effect"> Créer</a></li>
+							<li><a href="<?= site_url('exercice_budgetaire')?>" class="waves-effect">Lister</a></li>
 						</ul>
 					</div>
 				</li>
@@ -87,8 +87,8 @@
 						entrée<i class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
-							<li><a href="#" class="waves-effect">Créer</a></li>
-							<li><a href="#" class="waves-effect">Lister</a></li>
+							<li><a href="<?= site_url('categorie_entree/create')?>" class="waves-effect">Créer</a></li>
+							<li><a href="<?= site_url('categorie_entree')?>" class="waves-effect">Lister</a></li>
 						</ul>
 					</div>
 				</li>
