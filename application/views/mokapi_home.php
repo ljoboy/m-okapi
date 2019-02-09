@@ -119,7 +119,7 @@
 
 		<!-- Breadcrumb-->
 		<div class="breadcrumb-dn">
-			<p><?= isset($page) ? $page : "" ?></p>
+			<p><?= isset($titre) ? $titre : "" ?></p>
 		</div>
 
 		<ul class="nav navbar-nav float-xs-right">

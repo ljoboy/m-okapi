@@ -1,6 +1,6 @@
 <?php
 if (!function_exists('breadcrumb')){
-	function($txt){
+	function breadcrumb($txt){
 		$data = explode("/", $txt);
 		$bd = anchor(site_url(),"m-okapi");
 		if (is_array($data)){
