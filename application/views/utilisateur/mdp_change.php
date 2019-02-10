@@ -2,6 +2,9 @@
 <em class="flex-center text-danger">
 	<?= $this->session->error_mdp_change; ?>
 </em>
+<em class="flex-center text-success">
+	<?= $this->session->success_mdp_change; ?>
+</em>
 <hr>
 <?= form_open(site_url('mokapi/mdp_change_action')) ?>
 <div class="md-form">
@@ -22,5 +25,7 @@
 	<label for="form6">Confirmer mot de passe</label>
 	<?php echo form_error('confirmer') ?>
 </div>
-<<?= form_close() ?>
+<button type="submit" class="btn btn-primary">Envoyer</button>
+<a href="<?php echo base_url() ?>" class="btn btn-default">Annuler</a>
+<?= form_close() ?>
 
