@@ -43,7 +43,7 @@ class Action_budgetaire extends CI_Controller
             $page = $this->load->view('action_budgetaire/action_budgetaire_read', $data, true);
             $this->load->view('mokapi_home',['page'=>$page]);
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Element non trouv&eacute;');
             redirect(site_url('action_budgetaire'));
         }
     }
@@ -78,7 +78,7 @@ class Action_budgetaire extends CI_Controller
 	    );
 
             $this->Action_budgetaire_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('message', 'Element cr&eacute;&eacute; avec succ&egrave;s');
             redirect(site_url('action_budgetaire'));
         }
     }
@@ -100,7 +100,7 @@ class Action_budgetaire extends CI_Controller
             $page = $this->load->view('action_budgetaire/action_budgetaire_form', $data, true);
             $this->load->view('mokapi_home',['page'=>$page]);
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Element non trouv&eacute;');
             redirect(site_url('action_budgetaire'));
         }
     }
@@ -120,7 +120,7 @@ class Action_budgetaire extends CI_Controller
 	    );
 
             $this->Action_budgetaire_model->update($this->input->post('id', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('message', 'Element modifi&eacute; avec succ&egrave;s');
             redirect(site_url('action_budgetaire'));
         }
     }
@@ -131,10 +131,10 @@ class Action_budgetaire extends CI_Controller
 
         if ($row) {
             $this->Action_budgetaire_model->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('message', 'Element &eacute;ffac&eacute; avec succ&egrave;s');
             redirect(site_url('action_budgetaire'));
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Element non trouv&eacute;');
             redirect(site_url('action_budgetaire'));
         }
     }

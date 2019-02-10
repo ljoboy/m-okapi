@@ -60,7 +60,7 @@ class Categorie_entree extends CI_Controller
             $page = $this->load->view('categorie_entree/categorie_entree_read', $data, true);
             $this->load->view('mokapi_home',['page'=>$page]);
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Element non trouv&eacute;');
             redirect(site_url('categorie_entree'));
         }
     }
@@ -91,7 +91,7 @@ class Categorie_entree extends CI_Controller
 	    );
 
             $this->Categorie_entree_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('message', 'Element cr&eacute;&eacute; avec succ&egrave;s');
             redirect(site_url('categorie_entree'));
         }
     }
@@ -111,7 +111,7 @@ class Categorie_entree extends CI_Controller
             $page = $this->load->view('categorie_entree/categorie_entree_form', $data, true);
             $this->load->view('mokapi_home', ['page'=>$page]);
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Element non trouv&eacute;');
             redirect(site_url('categorie_entree'));
         }
     }
@@ -129,7 +129,7 @@ class Categorie_entree extends CI_Controller
 	    );
 
             $this->Categorie_entree_model->update($this->input->post('id', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('message', 'Element modifi&eacute; avec succ&egrave;s');
             redirect(site_url('categorie_entree'));
         }
     }
@@ -140,10 +140,10 @@ class Categorie_entree extends CI_Controller
 
         if ($row) {
             $this->Categorie_entree_model->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('message', 'Element &eacute;ffac&eacute; avec succ&egrave;s');
             redirect(site_url('categorie_entree'));
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Element non trouv&eacute;');
             redirect(site_url('categorie_entree'));
         }
     }
