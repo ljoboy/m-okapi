@@ -19,7 +19,7 @@ class Exercice_budgetaire extends CI_Controller
 
     public function index()
     {
-        $p = $this->load->view('exercice_budgetaire/exercice_budgetaire_list', true);
+        $p = $this->load->view('exercice_budgetaire/exercice_budgetaire_list', [],true);
         $this->load->view('mokapi_home', ['page'=>$p]);
     } 
     

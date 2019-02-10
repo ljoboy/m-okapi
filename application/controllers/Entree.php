@@ -78,7 +78,8 @@ class Entree extends CI_Controller
 	    'montant' => set_value('montant'),
 	    'date_entree' => set_value('date_entree'),
 	);
-        $this->load->view('entree/entree_form', $data);
+        $p = $this->load->view('entree/entree_form', $data, true);
+        $this->load->view('mokapi_home', ['page'=>$p]);
     }
     
     public function create_action() 

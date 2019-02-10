@@ -96,9 +96,9 @@
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
-							<li><a href="#" class="waves-effect">Dépenses</a></li>
-							<li><a href="#" class="waves-effect">Statistiques</a></li>
-							<li><a href="#" class="waves-effect">Bilan</a></li>
+							<li><a href="<?=site_url('rapport/depenses')?>" class="waves-effect">Dépenses</a></li>
+							<li><a href="<?=site_url('rapport/stats')?>" class="waves-effect">Statistiques</a></li>
+							<li><a href="<?=site_url('rapport/bilan')?>" class="waves-effect">Bilan</a></li>
 						</ul>
 					</div>
 				</li>

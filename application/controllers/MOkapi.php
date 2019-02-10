@@ -20,6 +20,13 @@ class MOkapi extends CI_Controller
 		$this->load->view("mokapi_home", $data);
     }
 
+	public function mdp_change()
+	{
+
+    }
+
+
+
 	public function deconnexion()
 	{
 		$this->session->unset_userdata('is_connected');

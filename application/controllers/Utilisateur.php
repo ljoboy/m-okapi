@@ -110,4 +110,9 @@ class Utilisateur extends CI_Controller
 		$part = $this->load->view('utilisateur/login',[],true);
 		$this->load->view("utilisateur/index",["part"=>$part]);
     }
+
+	public function mdp_oublie()
+	{
+		
+    }
 }
