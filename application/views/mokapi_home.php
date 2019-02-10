@@ -130,10 +130,10 @@
 				</a>
 				<div class="dropdown-menu dropdown-primary dd-right" aria-labelledby="dropdownMenu1"
 					 data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-					<a class="dropdown-item" href="#">Modifier mot de passe</a>
-					<a class="dropdown-item" href="#">Param&egrave;tre de profil</a>
+					<a class="dropdown-item" href="<?= site_url('mokapi/mdp_change')?>">Modifier mot de passe</a>
+					<a class="dropdown-item" href="<?= site_url('mokapi/params')?>">Param&egrave;tre de profil</a>
 					<hr>
-					<a class="dropdown-item" href="<?php echo site_url('mOkapi/deconnexion') ?>">Deconnexion</a>
+					<a class="dropdown-item" href="<?php echo site_url('mokapi/deconnexion') ?>">Deconnexion</a>
 				</div>
 			</li>
 		</ul>

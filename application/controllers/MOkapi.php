@@ -20,9 +20,21 @@ class MOkapi extends CI_Controller
 		$this->load->view("mokapi_home", $data);
     }
 
+	public function mdp_change_action()
+	{
+		
+    }
+
 	public function mdp_change()
 	{
+		$p = $this->load->view('utilisateur/mdp_change',[],true);
+		$this->load->view('mokapi_home',['page'=>$p]);
+    }
 
+	public function params()
+	{
+		$p = $this->load->view('utilisateur/params',[],true);
+		$this->load->view('mokapi_home',['page'=>$p]);
     }
 
 
