@@ -40,7 +40,8 @@ class Action_budgetaire extends CI_Controller
 		'motif' => $row->motif,
 		'date_creation' => $row->date_creation,
 	    );
-            $this->load->view('action_budgetaire/action_budgetaire_read', $data);
+            $page = $this->load->view('action_budgetaire/action_budgetaire_read', $data, true);
+            $this->load->view('mokapi_home',['page'=>$page]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('action_budgetaire'));
@@ -96,7 +97,8 @@ class Action_budgetaire extends CI_Controller
 		'motif' => set_value('motif', $row->motif),
 		'date_creation' => set_value('date_creation', $row->date_creation),
 	    );
-            $this->load->view('action_budgetaire/action_budgetaire_form', $data);
+            $page = $this->load->view('action_budgetaire/action_budgetaire_form', $data, true);
+            $this->load->view('mokapi_home',['page'=>$page]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('action_budgetaire'));
