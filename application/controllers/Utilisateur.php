@@ -76,16 +76,17 @@ class Utilisateur extends CI_Controller
 
     public function connexion()
     {
-        $login = $this->input->post('login');
-        $mdp = $this->input->post('mdp');
-        $d = array(
-            'login' => $login,
-            'mdp' => $mdp
-        );
-
-		if ($_SERVER['REQUEST_METHOD'] === "POST") {
-			$this->load->model('UtilisateurModel');
-			$r = $this->UtilisateurModel->check_authentification($d);
+		$this->form_validation->set_rules('mdp', 'Mot de passe', 'required', ['required'=>'Le %s est obligatoire']);
+		$this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'required', ['required'=>'Le %s est obligatoire']);
+		if ($this->form_validation->run() === TRUE) {
+			$login = $this->input->post('login');
+			$mdp = $this->input->post('mdp');
+			$d = array(
+				'login' => $login,
+				'mdp' => $mdp
+			);
+			$this->load->model('utilisateurModel');
+			$r = $this->utilisateurModel->check_authentification($d);
 
 			if(count($r) > 0)
 			{
@@ -107,8 +108,7 @@ class Utilisateur extends CI_Controller
 				$this->session->set_flashdata($d);
 			}
 		}
-		$part = $this->load->view('utilisateur/login',[],true);
-		$this->load->view("utilisateur/index",["part"=>$part]);
+		redirect('utilisateur/form_authentification');
     }
 
 	public function mdp_oublie()
