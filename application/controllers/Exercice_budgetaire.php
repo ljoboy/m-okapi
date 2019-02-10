@@ -19,7 +19,8 @@ class Exercice_budgetaire extends CI_Controller
 
     public function index()
     {
-        $this->load->view('exercice_budgetaire/exercice_budgetaire_list');
+        $p = $this->load->view('exercice_budgetaire/exercice_budgetaire_list', true);
+        $this->load->view('mokapi_home', ['page'=>$p]);
     } 
     
     public function json() {
@@ -39,7 +40,8 @@ class Exercice_budgetaire extends CI_Controller
 		'budget_initial' => $row->budget_initial,
 		'date_creation' => $row->date_creation,
 	    );
-            $this->load->view('exercice_budgetaire/exercice_budgetaire_read', $data);
+            $p = $this->load->view('exercice_budgetaire/exercice_budgetaire_read', $data, true);
+			$this->load->view('mokapi_home', ['page'=>$p]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('exercice_budgetaire'));
@@ -58,7 +60,8 @@ class Exercice_budgetaire extends CI_Controller
 	    'budget_initial' => set_value('budget_initial'),
 	    'date_creation' => set_value('date_creation'),
 	);
-        $this->load->view('exercice_budgetaire/exercice_budgetaire_form', $data);
+        $p = $this->load->view('exercice_budgetaire/exercice_budgetaire_form', $data, true);
+		$this->load->view('mokapi_home', ['page'=>$p]);
     }
     
     public function create_action() 
@@ -97,7 +100,8 @@ class Exercice_budgetaire extends CI_Controller
 		'budget_initial' => set_value('budget_initial', $row->budget_initial),
 		'date_creation' => set_value('date_creation', $row->date_creation),
 	    );
-            $this->load->view('exercice_budgetaire/exercice_budgetaire_form', $data);
+            $p = $this->load->view('exercice_budgetaire/exercice_budgetaire_form', $data, true);
+			$this->load->view('mokapi_home', ['page'=>$p]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('exercice_budgetaire'));
