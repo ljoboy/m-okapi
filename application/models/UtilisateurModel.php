@@ -17,4 +17,26 @@ class UtilisateurModel extends CI_Model
         $res = $q->result();
         return  $res;
     }
+
+	private function mdp_compare($mdp)
+	{
+		$this->db->where('mdp',$mdp);
+		$this->db->from('utilisateur');
+		$r = $this->db->get()->result();
+		if (count($r)>0){
+			return true;
+		}else{
+			return false;
+		}
+    }
+
+	public function change_mdp($ex_mdp, $mdp)
+	{
+		$check = $this->mdp_compare($ex_mdp);
+		if ($check){
+			$this->db->where('id', $this->session->id);
+			$this->db->update('utilisateur', ['mdp'=>$mdp]);
+		}
+		return $check;
+    }
 }
