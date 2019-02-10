@@ -6,6 +6,7 @@ class Rapport extends CI_Controller
 {
 	public function __construct()
 	{
+		parent::__construct();
 		if(!$this->session->is_connected)
 		{
 			redirect("utilisateur/connexion");

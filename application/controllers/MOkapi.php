@@ -28,10 +28,9 @@ class MOkapi extends CI_Controller
 		$this->form_validation->set_rules('confirmer', 'confirmer mot de passe', 'required|matches[new_mdp]',
 			['required' => 'Ce champ est requis', 'matches' => 'Mot de passes discordent']);
 
-		$ex_mdp = $this->input->post('actuel', TRUE);
-		$mdp = $this->input->post('new_mdp', TRUE);
-
-		if ($this->form_validation->run() == true) {
+		if ($this->form_validation->run() === TRUE) {
+			$ex_mdp = $this->input->post('actuel', TRUE);
+			$mdp = $this->input->post('new_mdp', TRUE);
 			if ($this->utilisateurModel->change_mdp($ex_mdp, $mdp)){
 				$this->session->set_flashdata('success_mdp_change', 'Mot de passe changer avec succes');
 			}else{
