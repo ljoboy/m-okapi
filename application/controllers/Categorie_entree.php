@@ -57,7 +57,8 @@ class Categorie_entree extends CI_Controller
 		'id_utilisateur' => $row->id_utilisateur,
 		'nom' => $row->nom,
 	    );
-            $this->load->view('categorie_entree/categorie_entree_read', $data);
+            $page = $this->load->view('categorie_entree/categorie_entree_read', $data, true);
+            $this->load->view('mokapi_home',['page'=>$page]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('categorie_entree'));
@@ -73,7 +74,8 @@ class Categorie_entree extends CI_Controller
 	    'id_utilisateur' => set_value('id_utilisateur'),
 	    'nom' => set_value('nom'),
 	);
-        $this->load->view('categorie_entree/categorie_entree_form', $data);
+        $page = $this->load->view('categorie_entree/categorie_entree_form', $data, true);
+        $this->load->view('mokapi_home',['page'=>$page]);
     }
     
     public function create_action() 
@@ -106,7 +108,8 @@ class Categorie_entree extends CI_Controller
 		'id_utilisateur' => set_value('id_utilisateur', $row->id_utilisateur),
 		'nom' => set_value('nom', $row->nom),
 	    );
-            $this->load->view('categorie_entree/categorie_entree_form', $data);
+            $page = $this->load->view('categorie_entree/categorie_entree_form', $data, true);
+            $this->load->view('mokapi_home', ['page'=>$page]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('categorie_entree'));
