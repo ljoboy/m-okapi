@@ -14,12 +14,13 @@ class Sortie extends CI_Controller
 		}
         $this->load->model('Sortie_model');
         $this->load->library('form_validation');        
-	$this->load->library('datatables');
+		$this->load->library('datatables');
     }
 
     public function index()
     {
-        $this->load->view('sortie/sortie_list');
+        $p = $this->load->view('sortie/sortie_list',[],true);
+		$this->load->view('mokapi_home', ['page'=>$p]);
     } 
     
     public function json() {
@@ -37,7 +38,8 @@ class Sortie extends CI_Controller
 		'id_exercice_budgetaire' => $row->id_exercice_budgetaire,
 		'seuil' => $row->seuil,
 	    );
-            $this->load->view('sortie/sortie_read', $data);
+            $p = $this->load->view('sortie/sortie_read', $data, true);
+			$this->load->view('mokapi_home', ['page'=>$p]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('sortie'));
@@ -54,7 +56,8 @@ class Sortie extends CI_Controller
 	    'id_exercice_budgetaire' => set_value('id_exercice_budgetaire'),
 	    'seuil' => set_value('seuil'),
 	);
-        $this->load->view('sortie/sortie_form', $data);
+        $p = $this->load->view('sortie/sortie_form', $data, true);
+		$this->load->view('mokapi_home', ['page'=>$p]);
     }
     
     public function create_action() 
@@ -89,7 +92,8 @@ class Sortie extends CI_Controller
 		'id_exercice_budgetaire' => set_value('id_exercice_budgetaire', $row->id_exercice_budgetaire),
 		'seuil' => set_value('seuil', $row->seuil),
 	    );
-            $this->load->view('sortie/sortie_form', $data);
+            $p = $this->load->view('sortie/sortie_form', $data, true);
+			$this->load->view('mokapi_home', ['page'=>$p]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('sortie'));
