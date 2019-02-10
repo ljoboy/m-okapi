@@ -44,7 +44,8 @@ class Entree extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
-        $this->load->view('entree/entree_list', $data);
+        $page = $this->load->view('entree/entree_list', $data, true);
+        $this->load->view('mokapi_home', ['page'=>$page]);
     }
 
     public function read($id) 
