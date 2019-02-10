@@ -59,7 +59,8 @@ class Entree extends CI_Controller
 		'montant' => $row->montant,
 		'date_entree' => $row->date_entree,
 	    );
-            $this->load->view('entree/entree_read', $data);
+            $p = $this->load->view('entree/entree_read', $data, true);
+            $this->load->view('mokapi_home', ['page'=>$p]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('entree'));
@@ -114,7 +115,8 @@ class Entree extends CI_Controller
 		'montant' => set_value('montant', $row->montant),
 		'date_entree' => set_value('date_entree', $row->date_entree),
 	    );
-            $this->load->view('entree/entree_form', $data);
+            $p = $this->load->view('entree/entree_form', $data, true);
+            $this->load->view('mokapi_home', ['page'=>$p]);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('entree'));
