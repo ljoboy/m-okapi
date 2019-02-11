@@ -48,7 +48,7 @@ class Categorie_sortie extends CI_Controller
     public function create() 
     {
         $data = array(
-            'button' => 'Create',
+            'button' => 'Cr&eacute;er',
             'action' => site_url('categorie_sortie/create_action'),
 	    'id' => set_value('id'),
 	    'id_utilisateur' => set_value('id_utilisateur'),
@@ -82,7 +82,7 @@ class Categorie_sortie extends CI_Controller
 
         if ($row) {
             $data = array(
-                'button' => 'Update',
+                'button' => 'Modifier',
                 'action' => site_url('categorie_sortie/update_action'),
 		'id' => set_value('id', $row->id),
 		'id_utilisateur' => set_value('id_utilisateur', $row->id_utilisateur),

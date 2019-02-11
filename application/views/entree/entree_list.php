@@ -1,7 +1,7 @@
 <h2 style="margin-top:0px">Entree List</h2>
 <div class="row" style="margin-bottom: 10px">
 	<div class="col-md-4">
-		<?php echo anchor(site_url('entree/create'), 'Create', 'class="btn btn-primary"'); ?>
+		<?php echo anchor(site_url('entree/create'), 'Ajouter', 'class="btn btn-primary"'); ?>
 	</div>
 	<div class="col-md-4 text-center">
 		<div style="margin-top: 8px" id="message">

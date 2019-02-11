@@ -70,7 +70,7 @@ class Entree extends CI_Controller
     public function create() 
     {
         $data = array(
-            'button' => 'Create',
+            'button' => 'Cr&eacute;er',
             'action' => site_url('entree/create_action'),
 	    'id' => set_value('id'),
 	    'id_categorie_entree' => set_value('id_categorie_entree'),
@@ -108,7 +108,7 @@ class Entree extends CI_Controller
 
         if ($row) {
             $data = array(
-                'button' => 'Update',
+                'button' => 'Modifier',
                 'action' => site_url('entree/update_action'),
 		'id' => set_value('id', $row->id),
 		'id_categorie_entree' => set_value('id_categorie_entree', $row->id_categorie_entree),

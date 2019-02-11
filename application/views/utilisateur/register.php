@@ -46,7 +46,7 @@
 			</div>
 
 			<div class="text-xs-center">
-				<button class="btn btn-ins btn-lg">Cr&eacute;er</button>
+				<button class="btn btn-ins btn-lg">Ajouter</button>
 				<hr>
 				<fieldset class="form-group">
 					<a href="<?= site_url() ?>">J'ai déjà un compte</a>

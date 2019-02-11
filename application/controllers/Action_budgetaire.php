@@ -51,7 +51,7 @@ class Action_budgetaire extends CI_Controller
     public function create() 
     {
         $data = array(
-            'button' => 'Create',
+            'button' => 'Cr&eacute;er',
             'action' => site_url('action_budgetaire/create_action'),
 	    'id' => set_value('id'),
 	    'id_sortie' => set_value('id_sortie'),
@@ -89,7 +89,7 @@ class Action_budgetaire extends CI_Controller
 
         if ($row) {
             $data = array(
-                'button' => 'Update',
+                'button' => 'Modifier',
                 'action' => site_url('action_budgetaire/update_action'),
 		'id' => set_value('id', $row->id),
 		'id_sortie' => set_value('id_sortie', $row->id_sortie),
