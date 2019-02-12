@@ -1,4 +1,4 @@
-<h2>Categorie_sortie Read</h2>
+<h2>Voir categorie sortie</h2>
 <table class="table">
 	<tr>
 		<td>Nom</td>
