@@ -13,8 +13,8 @@ class Exercice_budgetaire extends CI_Controller
 			redirect("utilisateur/connexion");
 		}
         $this->load->model('Exercice_budgetaire_model');
-        $this->load->library('form_validation');        
-	$this->load->library('datatables');
+
+
     }
 
     public function index()

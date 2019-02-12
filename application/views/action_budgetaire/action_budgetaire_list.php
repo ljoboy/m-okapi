@@ -47,7 +47,7 @@
 				$('#mytable_filter input')
 					.off('.DT')
 					.on('keyup.DT', function (e) {
-						if (e.keyCode == 13) {
+						if (e.keyCode === 13) {
 							api.search(this.value).draw();
 						}
 					});

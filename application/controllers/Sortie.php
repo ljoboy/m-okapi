@@ -13,8 +13,8 @@ class Sortie extends CI_Controller
 			redirect("utilisateur/connexion");
 		}
         $this->load->model('Sortie_model');
-        $this->load->library('form_validation');        
-		$this->load->library('datatables');
+
+
     }
 
     public function index()

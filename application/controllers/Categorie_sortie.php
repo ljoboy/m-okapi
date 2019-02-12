@@ -13,19 +13,38 @@ class Categorie_sortie extends CI_Controller
 			redirect("utilisateur/connexion");
 		}
         $this->load->model('Categorie_sortie_model');
-        $this->load->library('form_validation');        
-	$this->load->library('datatables');
     }
 
     public function index()
     {
-        $page = $this->load->view('categorie_sortie/categorie_sortie_list',[],true);
+		$q = urldecode($this->input->get('q', TRUE));
+		$start = intval($this->input->get('start'));
+
+		if ($q <> '') {
+			$config['base_url'] = base_url() . 'categorie_sortie/index.html?q=' . urlencode($q);
+			$config['first_url'] = base_url() . 'categorie_sortie/index.html?q=' . urlencode($q);
+		} else {
+			$config['base_url'] = base_url() . 'categorie_sortie/index.html';
+			$config['first_url'] = base_url() . 'categorie_sortie/index.html';
+		}
+
+		$config['per_page'] = 10;
+		$config['page_query_string'] = TRUE;
+		$config['total_rows'] = $this->Categorie_sortie_model->total_rows($q);
+		$categorie_sortie = $this->Categorie_sortie_model->get_limit_data($config['per_page'], $start, $q);
+
+		$this->load->library('pagination');
+		$this->pagination->initialize($config);
+
+		$data = array(
+			'categorie_sortie_data' => $categorie_sortie,
+			'q' => $q,
+			'pagination' => $this->pagination->create_links(),
+			'total_rows' => $config['total_rows'],
+			'start' => $start,
+		);
+        $page = $this->load->view('categorie_sortie/categorie_sortie_list',$data,true);
         $this->load->view('mokapi_home',['page'=>$page]);
-    } 
-    
-    public function json() {
-        header('Content-Type: application/json');
-        echo $this->Categorie_sortie_model->json();
     }
 
     public function read($id) 
@@ -51,7 +70,6 @@ class Categorie_sortie extends CI_Controller
             'button' => 'Cr&eacute;er',
             'action' => site_url('categorie_sortie/create_action'),
 	    'id' => set_value('id'),
-	    'id_utilisateur' => set_value('id_utilisateur'),
 	    'nom' => set_value('nom'),
 	);
         $p = $this->load->view('categorie_sortie/categorie_sortie_form', $data, true);
@@ -66,7 +84,7 @@ class Categorie_sortie extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'id_utilisateur' => $this->input->post('id_utilisateur',TRUE),
+		'id_utilisateur' => $this->session->id,
 		'nom' => $this->input->post('nom',TRUE),
 	    );
 
@@ -85,10 +103,11 @@ class Categorie_sortie extends CI_Controller
                 'button' => 'Modifier',
                 'action' => site_url('categorie_sortie/update_action'),
 		'id' => set_value('id', $row->id),
-		'id_utilisateur' => set_value('id_utilisateur', $row->id_utilisateur),
+		'id_utilisateur' => set_value('id_utilisateur', $this->session->id),
 		'nom' => set_value('nom', $row->nom),
 	    );
-            $this->load->view('categorie_sortie/categorie_sortie_form', $data);
+            $p = $this->load->view('categorie_sortie/categorie_sortie_form', $data, true);
+            $this->load->view("mokapi_home", ['page' => $p]);
         } else {
             $this->session->set_flashdata('message', 'Element non trouv&eacute;');
             redirect(site_url('categorie_sortie'));
@@ -103,7 +122,7 @@ class Categorie_sortie extends CI_Controller
             $this->update($this->input->post('id', TRUE));
         } else {
             $data = array(
-		'id_utilisateur' => $this->input->post('id_utilisateur',TRUE),
+		'id_utilisateur' => $this->sesson->id,
 		'nom' => $this->input->post('nom',TRUE),
 	    );
 

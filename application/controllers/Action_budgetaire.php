@@ -13,8 +13,8 @@ class Action_budgetaire extends CI_Controller
 			redirect("utilisateur/connexion");
 		}
         $this->load->model('Action_budgetaire_model');
-        $this->load->library('form_validation');        
-		$this->load->library('datatables');
+
+
 		$data['titre'] = "Action Budgétaire";
     }
 

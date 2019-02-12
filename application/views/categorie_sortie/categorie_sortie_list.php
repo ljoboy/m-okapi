@@ -1,83 +1,63 @@
-        <div class="row" style="margin-bottom: 10px">
-            <div class="col-md-4">
-                <h2 style="margin-top:0px">Categorie_sortie List</h2>
-            </div>
-            <div class="col-md-4 text-center">
-                <div style="margin-top: 4px"  id="message">
-                    <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
-                </div>
-            </div>
-            <div class="col-md-4 text-right">
-                <?php echo anchor(site_url('categorie_sortie/create'), 'Ajouter', 'class="btn btn-primary"'); ?>
-	    </div>
-        </div>
-        <table class="table table-bordered table-striped" id="mytable">
-            <thead>
-                <tr>
-                    <th width="80px">No</th>
-		    <th>Id Utilisateur</th>
-		    <th>Nom</th>
-		    <th width="200px">Action</th>
-                </tr>
-            </thead>
-	    
-        </table>
-        <script src="<?php echo base_url('assets/js/jquery-1.11.2.min.js') ?>"></script>
-        <script src="<?php echo base_url('assets/datatables/jquery.dataTables.js') ?>"></script>
-        <script src="<?php echo base_url('assets/datatables/dataTables.bootstrap.js') ?>"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
-                {
-                    return {
-                        "iStart": oSettings._iDisplayStart,
-                        "iEnd": oSettings.fnDisplayEnd(),
-                        "iLength": oSettings._iDisplayLength,
-                        "iTotal": oSettings.fnRecordsTotal(),
-                        "iFilteredTotal": oSettings.fnRecordsDisplay(),
-                        "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
-                        "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
-                    };
-                };
-
-                var t = $("#mytable").dataTable({
-                    initComplete: function() {
-                        var api = this.api();
-                        $('#mytable_filter input')
-                                .off('.DT')
-                                .on('keyup.DT', function(e) {
-                                    if (e.keyCode == 13) {
-                                        api.search(this.value).draw();
-                            }
-                        });
-                    },
-                    oLanguage: {
-                        sProcessing: "loading..."
-                    },
-                    processing: true,
-                    serverSide: true,
-                    ajax: {"url": "categorie_sortie/json", "type": "POST"},
-                    columns: [
-                        {
-                            "data": "id",
-                            "orderable": false
-                        },{"data": "id_utilisateur"},{"data": "nom"},
-                        {
-                            "data" : "action",
-                            "orderable": false,
-                            "className" : "text-center"
-                        }
-                    ],
-                    order: [[0, 'desc']],
-                    rowCallback: function(row, data, iDisplayIndex) {
-                        var info = this.fnPagingInfo();
-                        var page = info.iPage;
-                        var length = info.iLength;
-                        var index = page * length + (iDisplayIndex + 1);
-                        $('td:eq(0)', row).html(index);
-                    }
-                });
-            });
-        </script>
-    </body>
-</html>
+<h2>Liste des categorie sortie</h2>
+<div class="row"">
+<div class="col-md-4">
+	<?php echo anchor(site_url('categorie_sortie/create'), 'Ajouter', 'class="btn btn-primary"'); ?>
+</div>
+<div class="col-md-4 text-center">
+	<div style="margin-top: 8px" id="message">
+		<?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+	</div>
+</div>
+<div class="col-md-1 text-right">
+</div>
+<div class="col-md-3 text-right">
+	<form action="<?php echo site_url('categorie_sortie/index'); ?>" class="form-inline" method="get">
+		<div class="input-group">
+			<input placeholder="recherche..." type="text" class="form-control" name="q" value="<?php echo $q; ?>">
+			<span class="input-group-btn">
+                            <?php
+							if ($q <> '') {
+								?>
+								<a href="<?php echo site_url('categorie_sortie'); ?>"
+								   class="btn btn-default">Annuler</a>
+								<?php
+							}
+							?>
+                          <button class="btn btn-primary" type="submit">Rechercher</button>
+                        </span>
+		</div>
+	</form>
+</div>
+<table class="table table-bordered">
+	<tr>
+		<th>No</th>
+		<th>Nom</th>
+		<th>Action</th>
+	</tr><?php
+	foreach ($categorie_sortie_data as $categorie_sortie) {
+		?>
+		<tr>
+			<td width="80px"><?php echo ++$start ?></td>
+			<td><?php echo $categorie_sortie->nom ?></td>
+			<td style="text-align:center; width: 25%">
+				<?php
+				echo anchor(site_url('categorie_sortie/read/' . $categorie_sortie->id), 'Voir');
+				echo ' | ';
+				echo anchor(site_url('categorie_sortie/update/' . $categorie_sortie->id), 'Modifier');
+				echo ' | ';
+				echo anchor(site_url('categorie_sortie/delete/' . $categorie_sortie->id), 'Effacer', 'onclick="javasciprt: return confirm(\'Etes-vous sure ?\')"');
+				?>
+			</td>
+		</tr>
+		<?php
+	}
+	?>
+</table>
+<div class="row">
+	<div class="col-md-6">
+		<a href="#" class="btn btn-primary">Nombre d'éléments : <?php echo $total_rows ?></a>
+	</div>
+	<div class="col-md-6 text-right">
+		<?php echo $pagination ?>
+	</div>
+</div>

@@ -8,4 +8,4 @@
 * Patrice TSHIBWABWA PATRICE
 * Francisca FATUMA KAYUMBA
 * Fidèle PALUKU KAHUMBA
-* Patrick MADI ZUMANGA
+* Allegra KAMWANG 
