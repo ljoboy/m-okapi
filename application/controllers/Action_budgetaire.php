@@ -13,20 +13,39 @@ class Action_budgetaire extends CI_Controller
 			redirect("utilisateur/connexion");
 		}
         $this->load->model('Action_budgetaire_model');
-
-
-		$data['titre'] = "Action Budgétaire";
+		$this->load->model('sortie_model');
     }
 
     public function index()
     {
-        $data['page'] = $this->load->view('action_budgetaire/action_budgetaire_list', [], true);
+		$q = urldecode($this->input->get('q', TRUE));
+		$start = intval($this->input->get('start'));
+
+		if ($q <> '') {
+			$config['base_url'] = base_url() . 'action_budgetaire/index.html?q=' . urlencode($q);
+			$config['first_url'] = base_url() . 'action_budgetaire/index.html?q=' . urlencode($q);
+		} else {
+			$config['base_url'] = base_url() . 'action_budgetaire/index.html';
+			$config['first_url'] = base_url() . 'action_budgetaire/index.html';
+		}
+
+		$config['per_page'] = 10;
+		$config['page_query_string'] = TRUE;
+		$config['total_rows'] = $this->Action_budgetaire_model->total_rows($q);
+		$action_budgetaire = $this->Action_budgetaire_model->get_limit_data($config['per_page'], $start, $q);
+
+		$this->load->library('pagination');
+		$this->pagination->initialize($config);
+
+		$data = array(
+			'action_budgetaire_data' => $action_budgetaire,
+			'q' => $q,
+			'pagination' => $this->pagination->create_links(),
+			'total_rows' => $config['total_rows'],
+			'start' => $start,
+		);
+        $data['page'] = $this->load->view('action_budgetaire/action_budgetaire_list', $data, true);
         $this->load->view('mokapi_home',$data);
-    } 
-    
-    public function json() {
-        header('Content-Type: application/json');
-        echo $this->Action_budgetaire_model->json();
     }
 
     public function read($id) 
@@ -53,12 +72,13 @@ class Action_budgetaire extends CI_Controller
         $data = array(
             'button' => 'Cr&eacute;er',
             'action' => site_url('action_budgetaire/create_action'),
-	    'id' => set_value('id'),
-	    'id_sortie' => set_value('id_sortie'),
-	    'montant_utilise' => set_value('montant_utilise'),
-	    'motif' => set_value('motif'),
-	    'date_creation' => set_value('date_creation'),
-	);
+			'id' => set_value('id'),
+			'id_sortie' => set_value('id_sortie'),
+			'montant_utilise' => set_value('montant_utilise'),
+			'motif' => set_value('motif'),
+			'date_creation' => set_value('date_creation'),
+			'sorties' => $this->sortie_model->get_all()
+		);
         $page = $this->load->view('action_budgetaire/action_budgetaire_form', $data, true);
         $this->load->view('mokapi_home',['page'=>$page]);
     }
@@ -74,7 +94,7 @@ class Action_budgetaire extends CI_Controller
 		'id_sortie' => $this->input->post('id_sortie',TRUE),
 		'montant_utilise' => $this->input->post('montant_utilise',TRUE),
 		'motif' => $this->input->post('motif',TRUE),
-		'date_creation' => $this->input->post('date_creation',TRUE),
+		'date_creation' => date('Y/m/d H:i:s'),
 	    );
 
             $this->Action_budgetaire_model->insert($data);

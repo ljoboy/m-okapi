@@ -65,6 +65,15 @@
 						</ul>
 					</div>
 				</li>
+				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i>Sorties<i
+							class="fa fa-angle-down rotate-icon"></i></a>
+					<div class="collapsible-body">
+						<ul>
+							<li><a href="<?= site_url('sortie/create')?>" class="waves-effect"> Créer</a></li>
+							<li><a href="<?= site_url('sortie')?>" class="waves-effect"> Lister</a></li>
+						</ul>
+					</div>
+				</li>
 				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i>Exercice budgétaire<i
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">

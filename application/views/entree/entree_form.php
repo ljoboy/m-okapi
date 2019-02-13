@@ -2,13 +2,12 @@
 <form action="<?php echo $action; ?>" method="post">
 	<div class="form-group">
 		<select class="mdb-select" name="id_categorie_entree" id="id_categorie_entree">
-			<option value="" disabled selected>Choisissez une categorie</option>
+			<option value="" disabled>Choisissez une categorie</option>
 			<?php foreach ($entree_cat as $item): ?>
-			<option value="<?=$item->id?>"><?=$item->nom?></option>
+			<option value="<?=$item->id?>" <?= ($id_categorie_entree == $item->id) ? "selected" : ""?>><?=$item->nom?></option>
 			<?php endforeach; ?>
 		</select>
 		<label for="id_categorie_entree">Id Categorie Entree <?php echo form_error('id_categorie_entree') ?></label>
-		<?php echo $id_categorie_entree; ?>
 	</div>
 	<div class="form-group">
 		<label for="varchar">Nom <?php echo form_error('nom') ?></label>
