@@ -86,7 +86,7 @@ class Categorie_entree extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'id_utilisateur' => $this->input->post('id_utilisateur',TRUE),
+		'id_utilisateur' => $this->session->id,
 		'nom' => $this->input->post('nom',TRUE),
 	    );
 
