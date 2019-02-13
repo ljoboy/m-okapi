@@ -1,27 +1,23 @@
+<h2 style="margin-bottom: 20px;"> <?php echo $button ?> un Exercice Budgetaire</h2>
+<form action="<?php echo $action; ?>" method="post">
+	<p class="text-danger flex-center"><?= $this->session->date_error ?></p>
 
-        <h2 style="margin-top:0px">Exercice_budgetaire <?php echo $button ?></h2>
-        <form action="<?php echo $action; ?>" method="post">
-	    <div class="form-group">
-            <label for="int">Id Utilisateur <?php echo form_error('id_utilisateur') ?></label>
-            <input type="text" class="form-control" name="id_utilisateur" id="id_utilisateur" placeholder="Id Utilisateur" value="<?php echo $id_utilisateur; ?>" />
-        </div>
-	    <div class="form-group">
-            <label for="date">Date Debut <?php echo form_error('date_debut') ?></label>
-            <input type="text" class="form-control" name="date_debut" id="date_debut" placeholder="Date Debut" value="<?php echo $date_debut; ?>" />
-        </div>
-	    <div class="form-group">
-            <label for="date">Date Fin <?php echo form_error('date_fin') ?></label>
-            <input type="text" class="form-control" name="date_fin" id="date_fin" placeholder="Date Fin" value="<?php echo $date_fin; ?>" />
-        </div>
-	    <div class="form-group">
-            <label for="double">Budget Initial <?php echo form_error('budget_initial') ?></label>
-            <input type="text" class="form-control" name="budget_initial" id="budget_initial" placeholder="Budget Initial" value="<?php echo $budget_initial; ?>" />
-        </div>
-	    <div class="form-group">
-            <label for="datetime">Date Creation <?php echo form_error('date_creation') ?></label>
-            <input type="text" class="form-control" name="date_creation" id="date_creation" placeholder="Date Creation" value="<?php echo $date_creation; ?>" />
-        </div>
-	    <input type="hidden" name="id" value="<?php echo $id; ?>" /> 
-	    <button type="submit" class="btn btn-primary"><?php echo $button ?></button> 
-	    <a href="<?php echo site_url('exercice_budgetaire') ?>" class="btn btn-default">Cancel</a>
-	</form>
+	<div class="md-form">
+		<input placeholder="Choisissez une date" type="text" name="date_debut" id="date-picker-example" data-value="<?php echo $date_debut; ?>" class="form-control datepicker">
+		<label for="date-picker-example">Date debut <?php echo form_error('date_debut') ?></label>
+	</div>
+	<div class="md-form">
+		<input placeholder="Choisissez une date" type="text" name="date_fin" id="date-picker-example" data-value="<?php echo $date_fin; ?>" class="form-control datepicker">
+		<label for="date-picker-example">Date fin <?php echo form_error('date_fin') ?></label>
+	</div>
+	<div class="md-form input-group">
+		<span class="input-group-addon">CDF</span>
+		<input name="budget_initial" type="number" class="form-control" aria-label="Montant (en francs Congolais)" value="<?php echo $budget_initial; ?>">
+		<span class="input-group-addon">.00</span>
+	</div>
+	<input type="hidden" name="id_utilisateur" value="<?php echo $this->session->id; ?>" />
+	<input type="hidden" name="date_creation" value="<?php echo date("Y/m/d"); ?>"/>
+	<input type="hidden" name="id" value="<?php echo $id; ?>"/>
+	<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
+	<a href="<?php echo site_url('exercice_budgetaire') ?>" class="btn btn-default">Annuler</a>
+</form>

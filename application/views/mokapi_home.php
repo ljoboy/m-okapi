@@ -173,8 +173,22 @@
 	// Material Select Initialization
 	$(document).ready(function() {
 		$('.mdb-select').material_select();
+		$('.datepicker').pickadate({
+			monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+			monthsShort: ['Jan', "Fév", "Mar", "Avr", "Mai", "Jun", "Jui", "Aou", "Sep", "Oct", " Nov", "Déc"],
+			weekdaysFull: ['Dimanche', "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+			weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+			today: 'aujourd\'hui',
+			clear: 'effacer',
+			format: 'dddd, dd mmm, yyyy',
+			formatSubmit: 'yyyy/mm/dd',
+			close: 'Fermer',
+			labelMonthNext: 'Suivant',
+			labelMonthPrev: 'Précédent',
+			min: true
+		});
 	});
-</script>
 
+</script>
 </body>
 </html>
