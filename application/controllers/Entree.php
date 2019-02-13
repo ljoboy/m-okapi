@@ -13,7 +13,7 @@ class Entree extends CI_Controller
 			redirect("utilisateur/connexion");
 		}
         $this->load->model('Entree_model');
-        $this->load->library('form_validation');
+		$this->load->model('categorie_entree_model');
     }
 
     public function index()
@@ -33,7 +33,6 @@ class Entree extends CI_Controller
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->Entree_model->total_rows($q);
         $entree = $this->Entree_model->get_limit_data($config['per_page'], $start, $q);
-
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
@@ -42,7 +41,7 @@ class Entree extends CI_Controller
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
-            'start' => $start,
+            'start' => $start
         );
         $page = $this->load->view('entree/entree_list', $data, true);
         $this->load->view('mokapi_home', ['page'=>$page]);
@@ -53,12 +52,13 @@ class Entree extends CI_Controller
         $row = $this->Entree_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'id' => $row->id,
-		'id_categorie_entree' => $row->id_categorie_entree,
-		'nom' => $row->nom,
-		'montant' => $row->montant,
-		'date_entree' => $row->date_entree,
-	    );
+				'id' => $row->id,
+				'id_categorie_entree' => $row->id_cat,
+				'nom' => $row->nom,
+				'montant' => $row->montant,
+				'date_entree' => $row->date_entree,
+				'nom_cat' => $row->nom_cat
+			);
             $p = $this->load->view('entree/entree_read', $data, true);
             $this->load->view('mokapi_home', ['page'=>$p]);
         } else {
@@ -72,12 +72,13 @@ class Entree extends CI_Controller
         $data = array(
             'button' => 'Cr&eacute;er',
             'action' => site_url('entree/create_action'),
-	    'id' => set_value('id'),
-	    'id_categorie_entree' => set_value('id_categorie_entree'),
-	    'nom' => set_value('nom'),
-	    'montant' => set_value('montant'),
-	    'date_entree' => set_value('date_entree'),
-	);
+			'id' => set_value('id'),
+			'id_categorie_entree' => set_value('id_categorie_entree'),
+			'nom' => set_value('nom'),
+			'montant' => set_value('montant'),
+			'date_entree' => set_value('date_entree')
+		);
+        $data['entree_cat'] = $this->categorie_entree_model->get_all();
         $p = $this->load->view('entree/entree_form', $data, true);
         $this->load->view('mokapi_home', ['page'=>$p]);
     }
@@ -90,12 +91,11 @@ class Entree extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'id_categorie_entree' => $this->input->post('id_categorie_entree',TRUE),
-		'nom' => $this->input->post('nom',TRUE),
-		'montant' => $this->input->post('montant',TRUE),
-		'date_entree' => $this->input->post('date_entree',TRUE),
-	    );
-
+			'id_categorie_entree' => $this->input->post('id_categorie_entree',TRUE),
+			'nom' => $this->input->post('nom',TRUE),
+			'montant' => $this->input->post('montant',TRUE),
+			'date_entree' => date("Y-m-d"),
+			);
             $this->Entree_model->insert($data);
             $this->session->set_flashdata('message', 'Element cr&eacute;&eacute; avec succ&egrave;s');
             redirect(site_url('entree'));
@@ -110,12 +110,13 @@ class Entree extends CI_Controller
             $data = array(
                 'button' => 'Modifier',
                 'action' => site_url('entree/update_action'),
-		'id' => set_value('id', $row->id),
-		'id_categorie_entree' => set_value('id_categorie_entree', $row->id_categorie_entree),
-		'nom' => set_value('nom', $row->nom),
-		'montant' => set_value('montant', $row->montant),
-		'date_entree' => set_value('date_entree', $row->date_entree),
-	    );
+				'id' => set_value('id', $row->id),
+				'id_categorie_entree' => set_value('id_categorie_entree', $row->id_categorie_entree),
+				'nom' => set_value('nom', $row->nom),
+				'montant' => set_value('montant', $row->montant),
+				'date_entree' => set_value('date_entree', $row->date_entree),
+			);
+			$data['entree_cat'] = $this->categorie_entree_model->get_all();
             $p = $this->load->view('entree/entree_form', $data, true);
             $this->load->view('mokapi_home', ['page'=>$p]);
         } else {
@@ -160,7 +161,7 @@ class Entree extends CI_Controller
 
     public function _rules() 
     {
-	$this->form_validation->set_rules('id_categorie_entree', 'id categorie entree', 'trim|required');
+	$this->form_validation->set_rules('id_categorie_entree', 'id categorie entree', 'trim|required|numeric');
 	$this->form_validation->set_rules('nom', 'nom', 'trim|required');
 	$this->form_validation->set_rules('montant', 'montant', 'trim|required|numeric');
 	$this->form_validation->set_rules('date_entree', 'date entree', 'trim|required');

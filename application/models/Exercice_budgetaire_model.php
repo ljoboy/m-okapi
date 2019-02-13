@@ -21,7 +21,7 @@ class Exercice_budgetaire_model extends CI_Model
         $this->datatables->from('exercice_budgetaire');
         //add this line for join
         //$this->datatables->join('table2', 'exercice_budgetaire.field = table2.field');
-        $this->datatables->add_column('action', anchor(site_url('exercice_budgetaire/read/$1'),'Read')." | ".anchor(site_url('exercice_budgetaire/update/$1'),'Update')." | ".anchor(site_url('exercice_budgetaire/delete/$1'),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
+        $this->datatables->add_column('action', anchor(site_url('exercice_budgetaire/read/$1'),'Read')." | ".anchor(site_url('exercice_budgetaire/update/$1'),'Update')." | ".anchor(site_url('exercice_budgetaire/delete/$1'),'Delete','onclick="javasciprt: return confirm(\'Etes-vous sure ? ?\')"'), 'id');
         return $this->datatables->generate();
     }
 

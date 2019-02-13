@@ -21,7 +21,7 @@ class Action_budgetaire_model extends CI_Model
         $this->datatables->from('action_budgetaire');
         //add this line for join
         //$this->datatables->join('table2', 'action_budgetaire.field = table2.field');
-        $this->datatables->add_column('action', anchor(site_url('action_budgetaire/read/$1'),'Read')." | ".anchor(site_url('action_budgetaire/update/$1'),'Update')." | ".anchor(site_url('action_budgetaire/delete/$1'),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
+        $this->datatables->add_column('action', anchor(site_url('action_budgetaire/read/$1'),'Read')." | ".anchor(site_url('action_budgetaire/update/$1'),'Update')." | ".anchor(site_url('action_budgetaire/delete/$1'),'Delete','onclick="javasciprt: return confirm(\'Etes-vous sure ? ?\')"'), 'id');
         return $this->datatables->generate();
     }
 

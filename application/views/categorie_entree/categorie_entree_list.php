@@ -47,7 +47,7 @@
 				echo ' | ';
 				echo anchor(site_url('categorie_entree/update/' . $categorie_entree->id), 'Update');
 				echo ' | ';
-				echo anchor(site_url('categorie_entree/delete/' . $categorie_entree->id), 'Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+				echo anchor(site_url('categorie_entree/delete/' . $categorie_entree->id), 'Delete', 'onclick="javasciprt: return confirm(\'Etes-vous sure ? ?\')"');
 				?>
 			</td>
 		</tr>

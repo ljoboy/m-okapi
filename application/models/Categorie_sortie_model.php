@@ -21,7 +21,7 @@ class Categorie_sortie_model extends CI_Model
         $this->datatables->from('categorie_sortie');
         //add this line for join
         //$this->datatables->join('table2', 'categorie_sortie.field = table2.field');
-        $this->datatables->add_column('action', anchor(site_url('categorie_sortie/read/$1'),'Read')." | ".anchor(site_url('categorie_sortie/update/$1'),'Update')." | ".anchor(site_url('categorie_sortie/delete/$1'),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
+        $this->datatables->add_column('action', anchor(site_url('categorie_sortie/read/$1'),'Read')." | ".anchor(site_url('categorie_sortie/update/$1'),'Update')." | ".anchor(site_url('categorie_sortie/delete/$1'),'Delete','onclick="javasciprt: return confirm(\'Etes-vous sure ? ?\')"'), 'id');
         return $this->datatables->generate();
     }
 

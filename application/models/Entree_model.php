@@ -25,8 +25,18 @@ class Entree_model extends CI_Model
     // get data by id
     function get_by_id($id)
     {
-        $this->db->where($this->id, $id);
-        return $this->db->get($this->table)->row();
+		$this->db->select([
+			"categorie_entree.nom as nom_cat",
+			"entree.id",
+			"entree.nom",
+			"entree.montant",
+			"entree.date_entree",
+			"categorie_entree.id as id_cat"
+		]);
+		$this->db->from($this->table);
+		$this->db->join('categorie_entree',"entree.id_categorie_entree = categorie_entree.id");
+        $this->db->where($this->table.".".$this->id, $id);
+        return $this->db->get()->row();
     }
     
     // get total rows
@@ -42,14 +52,24 @@ class Entree_model extends CI_Model
 
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL) {
-        $this->db->order_by($this->id, $this->order);
-        $this->db->like('id', $q);
-	$this->db->or_like('id_categorie_entree', $q);
-	$this->db->or_like('nom', $q);
-	$this->db->or_like('montant', $q);
-	$this->db->or_like('date_entree', $q);
-	$this->db->limit($limit, $start);
-        return $this->db->get($this->table)->result();
+		$this->db->select([
+			"categorie_entree.nom as nom_cat",
+			"entree.id",
+			"entree.nom",
+			"entree.montant",
+			"entree.date_entree",
+			"categorie_entree.id as id_cat"
+		]);
+		$this->db->from($this->table);
+		$this->db->join('categorie_entree',"entree.id_categorie_entree = categorie_entree.id");
+        $this->db->order_by($this->table.".".$this->id, $this->order);
+        $this->db->like('entree.id', $q);
+		$this->db->or_like('entree.id_categorie_entree', $q);
+		$this->db->or_like('entree.nom', $q);
+		$this->db->or_like('entree.montant', $q);
+		$this->db->or_like('entree.date_entree', $q);
+		$this->db->limit($limit, $start);
+        return $this->db->get()->result();
     }
 
     // insert data

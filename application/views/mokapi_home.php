@@ -169,5 +169,12 @@
 	Ps.initialize(el);
 </script>
 
+<script>
+	// Material Select Initialization
+	$(document).ready(function() {
+		$('.mdb-select').material_select();
+	});
+</script>
+
 </body>
 </html>
