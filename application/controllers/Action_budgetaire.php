@@ -53,12 +53,13 @@ class Action_budgetaire extends CI_Controller
         $row = $this->Action_budgetaire_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'id' => $row->id,
-		'id_sortie' => $row->id_sortie,
-		'montant_utilise' => $row->montant_utilise,
-		'motif' => $row->motif,
-		'date_creation' => $row->date_creation,
-	    );
+				'id' => $row->id,
+				'id_sortie' => $row->id_sortie,
+				'montant_utilise' => $row->montant_utilise,
+				'motif' => $row->motif,
+				'date_creation' => $row->date_creation,
+				"sortie" => $this->sortie_model->get_by_id($row->id_sortie)
+	    	);
             $page = $this->load->view('action_budgetaire/action_budgetaire_read', $data, true);
             $this->load->view('mokapi_home',['page'=>$page]);
         } else {
@@ -111,12 +112,13 @@ class Action_budgetaire extends CI_Controller
             $data = array(
                 'button' => 'Modifier',
                 'action' => site_url('action_budgetaire/update_action'),
-		'id' => set_value('id', $row->id),
-		'id_sortie' => set_value('id_sortie', $row->id_sortie),
-		'montant_utilise' => set_value('montant_utilise', $row->montant_utilise),
-		'motif' => set_value('motif', $row->motif),
-		'date_creation' => set_value('date_creation', $row->date_creation),
-	    );
+				'id' => set_value('id', $row->id),
+				'id_sortie' => set_value('id_sortie', $row->id_sortie),
+				'montant_utilise' => set_value('montant_utilise', $row->montant_utilise),
+				'motif' => set_value('motif', $row->motif),
+				'date_creation' => set_value('date_creation', $row->date_creation),
+				'sorties' => $this->sortie_model->get_all()
+	    	);
             $page = $this->load->view('action_budgetaire/action_budgetaire_form', $data, true);
             $this->load->view('mokapi_home',['page'=>$page]);
         } else {

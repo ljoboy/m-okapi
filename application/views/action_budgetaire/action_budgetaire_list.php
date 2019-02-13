@@ -31,7 +31,6 @@
 <table class="table table-bordered" style="margin-bottom: 10px">
 	<tr>
 		<th>No</th>
-		<th>Categorie Sortie</th>
 		<th>Montant Utilise</th>
 		<th>Motif</th>
 		<th>Date Creation</th>
@@ -41,17 +40,16 @@
 		?>
 		<tr>
 			<td width="80px"><?php echo ++$start ?></td>
-			<td><?php echo $action_budgetaire->id_sortie ?></td>
 			<td><?php echo $action_budgetaire->montant_utilise ?></td>
 			<td><?php echo $action_budgetaire->motif ?></td>
-			<td><?php echo $action_budgetaire->date_creation ?></td>
-			<td style="text-align:center" width="200px">
+			<td><?php echo date_format(date_create($action_budgetaire->date_creation), "d-m-Y H:i:s") ?></td>
+			<td style="text-align:center;width: 25%">
 				<?php
-				echo anchor(site_url('action_budgetaire/read/' . $action_budgetaire->id), 'Read');
+				echo anchor(site_url('action_budgetaire/read/' . $action_budgetaire->id), 'Voir');
 				echo ' | ';
-				echo anchor(site_url('action_budgetaire/update/' . $action_budgetaire->id), 'Update');
+				echo anchor(site_url('action_budgetaire/update/' . $action_budgetaire->id), 'Modifier');
 				echo ' | ';
-				echo anchor(site_url('action_budgetaire/delete/' . $action_budgetaire->id), 'Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+				echo anchor(site_url('action_budgetaire/delete/' . $action_budgetaire->id), 'Effacer', 'onclick="javasciprt: return confirm(\'Etes-vous sure ?\')"');
 				?>
 			</td>
 		</tr>
