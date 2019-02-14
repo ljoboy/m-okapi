@@ -14,11 +14,11 @@ class Rapport extends CI_Controller
 		$this->load->model('categorie_sortie_model');
 		$this->load->model('sortie_model');
 		$this->load->model('entree_model');
+		$this->load->model('action_budgetaire_model');
 	}
 
 	public function bilan()
 	{
-		$data = [];
 		$data['categories'] = $this->categorie_sortie_model->get_all();
 		foreach ($data['categories'] as $category) {
 			$data['cat_seuil'][] = $this->sortie_model->sortie_sum($category->id);
@@ -34,7 +34,22 @@ class Rapport extends CI_Controller
 
 	public function depenses()
 	{
-		$data = [];
+
+		$data['sorties'] = $this->action_budgetaire_model->select_sum();
+		$script = '';
+		foreach ($data['sorties'] as $sortie){
+			$script .= '<script>
+							$(function () {
+								$(\'.min-chart#'.$sortie->nom.'\').easyPieChart({
+									barColor: "#4caf50",
+									onStep: function (from, to, percent) {
+										$(this.el).find(\'.percent\').text(Math.round(percent));
+									}
+								});
+							});
+					</script>';
+		}
+		$data['scripts'] = $script;
 		$p = $this->load->view('rapport/depenses',$data,true);
 		$this->load->view('mokapi_home',['page'=>$p]);
 	}

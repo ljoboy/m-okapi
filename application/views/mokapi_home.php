@@ -199,5 +199,6 @@
 	});
 
 </script>
+<?=isset($scripts) ? $scripts : ""?>
 </body>
 </html>

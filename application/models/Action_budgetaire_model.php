@@ -15,6 +15,19 @@ class Action_budgetaire_model extends CI_Model
 		parent::__construct();
 	}
 
+	public function select_sum()
+	{
+		$this->db->select([
+			'categorie_sortie.nom',
+			'sortie.seuil'
+		]);
+		$this->db->from($this->table);
+		$this->db->join('sortie', "sortie.id = action_budgetaire.id_sortie");
+		$this->db->join('categorie_sortie', "sortie.id_categorie_sortie = categorie_sortie.id");
+		$this->db->select_sum('montant_utilise');
+		return $this->db->get()->result();
+	}
+
 	// get all
 	function get_all()
 	{
