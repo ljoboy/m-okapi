@@ -1,3 +1,4 @@
+<h2 class="flex-center">Rapport</h2>
 <div class="row">
 	<div class="col-md-3">
 		<?php foreach ($sorties as $sortie):?>

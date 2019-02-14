@@ -17,6 +17,11 @@ class Rapport extends CI_Controller
 		$this->load->model('action_budgetaire_model');
 	}
 
+	public function index()
+	{
+		$this->bilan();
+	}
+
 	public function bilan()
 	{
 		$data['categories'] = $this->categorie_sortie_model->get_all();

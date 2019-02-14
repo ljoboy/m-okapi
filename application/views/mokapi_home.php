@@ -47,8 +47,17 @@
 		<!-- Side navigation links -->
 		<li>
 			<ul class="collapsible collapsible-accordion">
-				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i>
-						Categories de sorties<i class="fa fa-angle-down rotate-icon"></i></a>
+				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-circle-right"></i>
+						Categorie entrée<i class="fa fa-angle-down rotate-icon"></i></a>
+					<div class="collapsible-body">
+						<ul>
+							<li><a href="<?= site_url('categorie_entree/create')?>" class="waves-effect">Créer</a></li>
+							<li><a href="<?= site_url('categorie_entree')?>" class="waves-effect">Lister</a></li>
+						</ul>
+					</div>
+				</li>
+				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-circle-left"></i>
+						Categories sortie<i class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
 							<li><a href="<?= site_url('categorie_sortie/create')?>" class="waves-effect"> Créer</a></li>
@@ -56,7 +65,7 @@
 						</ul>
 					</div>
 				</li>
-				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i>Entrées<i
+				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-sign-in"></i>Entrées<i
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
@@ -65,7 +74,7 @@
 						</ul>
 					</div>
 				</li>
-				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i>Sorties<i
+				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-sign-out"></i>Sorties<i
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
@@ -74,7 +83,7 @@
 						</ul>
 					</div>
 				</li>
-				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i>Exercice budgétaire<i
+				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-bar-chart"></i>Exercice budgétaire<i
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
@@ -83,7 +92,7 @@
 						</ul>
 					</div>
 				</li>
-				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i>Action budgétaire<i
+				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-bank"></i>Action budgétaire<i
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
@@ -92,16 +101,7 @@
 						</ul>
 					</div>
 				</li>
-				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i>Categorie
-						entrée<i class="fa fa-angle-down rotate-icon"></i></a>
-					<div class="collapsible-body">
-						<ul>
-							<li><a href="<?= site_url('categorie_entree/create')?>" class="waves-effect">Créer</a></li>
-							<li><a href="<?= site_url('categorie_entree')?>" class="waves-effect">Lister</a></li>
-						</ul>
-					</div>
-				</li>
-				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i>Rapport<i
+				<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-line-chart"></i>Rapport<i
 							class="fa fa-angle-down rotate-icon"></i></a>
 					<div class="collapsible-body">
 						<ul>
