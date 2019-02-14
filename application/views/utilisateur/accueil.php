@@ -1,4 +1,4 @@
-<h3>Welcome <?php echo $this->session->nomcomplet; ?></h3>
+<h3>Bienvenue <?php echo $this->session->nomcomplet; ?></h3>
 <p>
-<a href="<?php echo site_url('mOkapi/deconnexion') ?>">Deconnexion</a>
+	<a href="<?php echo site_url('mOkapi/deconnexion') ?>">Deconnexion</a>
 </p>

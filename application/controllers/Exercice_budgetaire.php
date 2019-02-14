@@ -101,7 +101,7 @@ class Exercice_budgetaire extends CI_Controller
 				'date_creation' => date('Y-m-d H:i:s'),
 	    	);
             if (strtotime($data['date_debut']) > strtotime($data['date_fin'])){
-				$this->session->set_flashdata('date_error', 'La date de debut doit etre inferieur a la date');
+				$this->session->set_flashdata('date_error', 'La date de debut doit etre inferieur a la date de fin');
 				$this->create();
 			}else{
 				$this->Exercice_budgetaire_model->insert($data);

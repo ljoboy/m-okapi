@@ -110,9 +110,4 @@ class Utilisateur extends CI_Controller
 		}
 		redirect('utilisateur/form_authentification');
     }
-
-	public function mdp_oublie()
-	{
-		
-    }
 }

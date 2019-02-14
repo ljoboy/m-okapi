@@ -92,11 +92,11 @@ class Action_budgetaire extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'id_sortie' => $this->input->post('id_sortie',TRUE),
-		'montant_utilise' => $this->input->post('montant_utilise',TRUE),
-		'motif' => $this->input->post('motif',TRUE),
-		'date_creation' => date('Y/m/d H:i:s'),
-	    );
+				'id_sortie' => $this->input->post('id_sortie',TRUE),
+				'montant_utilise' => $this->input->post('montant_utilise',TRUE),
+				'motif' => $this->input->post('motif',TRUE),
+				'date_creation' => date('Y/m/d H:i:s'),
+	    	);
 
             $this->Action_budgetaire_model->insert($data);
             $this->session->set_flashdata('message', 'Element cr&eacute;&eacute; avec succ&egrave;s');
@@ -135,11 +135,11 @@ class Action_budgetaire extends CI_Controller
             $this->update($this->input->post('id', TRUE));
         } else {
             $data = array(
-		'id_sortie' => $this->input->post('id_sortie',TRUE),
-		'montant_utilise' => $this->input->post('montant_utilise',TRUE),
-		'motif' => $this->input->post('motif',TRUE),
-		'date_creation' => $this->input->post('date_creation',TRUE),
-	    );
+				'id_sortie' => $this->input->post('id_sortie',TRUE),
+				'montant_utilise' => $this->input->post('montant_utilise',TRUE),
+				'motif' => $this->input->post('motif',TRUE),
+				'date_creation' => $this->input->post('date_creation',TRUE),
+			);
 
             $this->Action_budgetaire_model->update($this->input->post('id', TRUE), $data);
             $this->session->set_flashdata('message', 'Element modifi&eacute; avec succ&egrave;s');
@@ -163,13 +163,13 @@ class Action_budgetaire extends CI_Controller
 
     public function _rules() 
     {
-	$this->form_validation->set_rules('id_sortie', 'id sortie', 'trim|required');
-	$this->form_validation->set_rules('montant_utilise', 'montant utilise', 'trim|required|numeric');
-	$this->form_validation->set_rules('motif', 'motif', 'trim|required');
-	$this->form_validation->set_rules('date_creation', 'date creation', 'trim|required');
+		$this->form_validation->set_rules('id_sortie', 'id sortie', 'trim|required');
+		$this->form_validation->set_rules('montant_utilise', 'montant utilise', 'trim|required|numeric');
+		$this->form_validation->set_rules('motif', 'motif', 'trim|required');
+		$this->form_validation->set_rules('date_creation', 'date creation', 'trim|required');
 
-	$this->form_validation->set_rules('id', 'id', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+		$this->form_validation->set_rules('id', 'id', 'trim');
+		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
 }

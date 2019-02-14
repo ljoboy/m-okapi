@@ -15,6 +15,12 @@ class Entree_model extends CI_Model
         parent::__construct();
     }
 
+	public function select_sum()
+	{
+		$this->db->select_sum('montant');
+		return $this->db->get($this->table)->result_array()[0];
+    }
+
     // get all
     function get_all()
     {
@@ -42,11 +48,11 @@ class Entree_model extends CI_Model
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id', $q);
-	$this->db->or_like('id_categorie_entree', $q);
-	$this->db->or_like('nom', $q);
-	$this->db->or_like('montant', $q);
-	$this->db->or_like('date_entree', $q);
-	$this->db->from($this->table);
+		$this->db->or_like('id_categorie_entree', $q);
+		$this->db->or_like('nom', $q);
+		$this->db->or_like('montant', $q);
+		$this->db->or_like('date_entree', $q);
+		$this->db->from($this->table);
         return $this->db->count_all_results();
     }
 

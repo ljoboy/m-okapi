@@ -8,4 +8,5 @@
 		<td></td>
 		<td><a href="<?php echo site_url('categorie_sortie') ?>" class="btn btn-default">Retour</a></td>
 	</tr>
+</table>
 

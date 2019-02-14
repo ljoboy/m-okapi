@@ -15,6 +15,13 @@ class Sortie_model extends CI_Model
 		parent::__construct();
 	}
 
+	public function sortie_sum($id)
+	{
+		$this->db->select_sum("seuil");
+		$this->db->where("id_categorie_sortie",$id);
+		return $this->db->get($this->table)->result_array()[0];
+	}
+
 	// get all
 	function get_all()
 	{

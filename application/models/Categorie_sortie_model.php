@@ -19,6 +19,7 @@ class Categorie_sortie_model extends CI_Model
     function get_all()
     {
         $this->db->order_by($this->id, $this->order);
+		$this->db->where('id_utilisateur', $this->session->id);
         return $this->db->get($this->table)->result();
     }
 
@@ -26,6 +27,7 @@ class Categorie_sortie_model extends CI_Model
     function get_by_id($id)
     {
         $this->db->where($this->id, $id);
+		$this->db->where('id_utilisateur', $this->session->id);
         return $this->db->get($this->table)->row();
     }
     
@@ -34,6 +36,7 @@ class Categorie_sortie_model extends CI_Model
         $this->db->like('id', $q);
 		$this->db->or_like('id_utilisateur', $q);
 		$this->db->or_like('nom', $q);
+		$this->db->where('id_utilisateur', $this->session->id);
 		$this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -45,6 +48,7 @@ class Categorie_sortie_model extends CI_Model
 		$this->db->or_like('id_utilisateur', $q);
 		$this->db->or_like('nom', $q);
 		$this->db->limit($limit, $start);
+		$this->db->where('id_utilisateur', $this->session->id);
         return $this->db->get($this->table)->result();
     }
 

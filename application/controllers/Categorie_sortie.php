@@ -122,7 +122,7 @@ class Categorie_sortie extends CI_Controller
             $this->update($this->input->post('id', TRUE));
         } else {
             $data = array(
-		'id_utilisateur' => $this->sesson->id,
+		'id_utilisateur' => $this->session->id,
 		'nom' => $this->input->post('nom',TRUE),
 	    );
 
