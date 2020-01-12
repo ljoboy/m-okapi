@@ -25,6 +25,7 @@ class Rapport extends CI_Controller
 	public function bilan()
 	{
 		$data['categories'] = $this->categorie_sortie_model->get_all();
+		$data['cat_seuil'] = [];
 		foreach ($data['categories'] as $category) {
 			$data['cat_seuil'][] = $this->sortie_model->sortie_sum($category->id);
 		}
