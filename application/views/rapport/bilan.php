@@ -1,6 +1,6 @@
 <?php $solde =  $sum_entree['montant'] - $sum_cat ?>
 <h2 class="flex-center">BILAN</h2>
-<table class="table table-hover">
+<table class="table">
 	<thead class="thead-default">
 		<tr>
 			<th>Sorties</th>
