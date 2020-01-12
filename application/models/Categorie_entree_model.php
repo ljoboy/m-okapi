@@ -32,9 +32,9 @@ class Categorie_entree_model extends CI_Model
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id', $q);
-	$this->db->or_like('id_utilisateur', $q);
-	$this->db->or_like('nom', $q);
-	$this->db->from($this->table);
+		$this->db->or_like('id_utilisateur', $q);
+		$this->db->or_like('nom', $q);
+		$this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
