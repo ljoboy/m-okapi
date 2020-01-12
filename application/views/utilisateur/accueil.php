@@ -1,4 +1,4 @@
-<h3>Bienvenue <?php echo $this->session->nomcomplet; ?></h3>
+<h3>Bienvenue <?php echo $this->session->nomcomplet; ?></h3><br>
 <div class="row">
 	<div class="col-md-3">
 		<!--Panel-->
